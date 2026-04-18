@@ -1,0 +1,27 @@
+# Robots.txt for ELLIE HOMES
+# https://elleodinya.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://elleodinya.com/sitemap.xml
+
+# Crawl-delay (optional)
+Crawl-delay: 10
+
+# Disallow admin or private directories (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all main pages
+Allow: /index.html
+Allow: /about.html
+Allow: /services.html
+Allow: /curtains.html
+Allow: /gallery.html
+Allow: /testimonials.html
+Allow: /contact.html
+
+# Allow images
+Allow: /images/

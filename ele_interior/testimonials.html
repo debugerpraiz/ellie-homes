@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials - ELLIE HOMES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        :root {
+            --cream: #F5F1E8;
+            --gold: #C9A96E;
+            --dark-charcoal: #2F2F2F;
+            --warm-brown: #8B7355;
+            --glass-bg: rgba(245, 241, 232, 0.1);
+            --glass-border: rgba(201, 169, 110, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark-charcoal);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: var(--glass-bg);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(245, 241, 232, 0.95);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--cream), var(--gold));
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--dark-charcoal);
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .hero-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--warm-brown);
+        }
+
+        /* Main Content */
+        main {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        /* Testimonial Slider */
+        .testimonial-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 500px;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0.3;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .testimonial-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .testimonial-quote::before,
+        .testimonial-quote::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--gold);
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .testimonial-quote::before {
+            top: -20px;
+            left: -20px;
+        }
+
+        .testimonial-quote::after {
+            bottom: -40px;
+            right: -20px;
+        }
+
+        .testimonial-client {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .client-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--warm-brown));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .client-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-charcoal);
+        }
+
+        .client-info p {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .star {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .slider-btn:hover {
+            background: var(--gold);
+            color: var(--dark-charcoal);
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            transform: scale(1.2);
+        }
+
+        /* Additional Testimonials Grid */
+        .additional-testimonials {
+            margin-top: 6rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 4px solid var(--gold);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .testimonial-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .card-quote {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .card-client {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .card-info h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--dark-charcoal);
+        }
+
+        .card-info p {
+            margin: 0;
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            margin-top: 6rem;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--gold), var(--warm-brown));
+            color: white;
+            border-radius: 12px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            margin-top: 6rem;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(245, 241, 232, 0.5);
+            border-radius: 12px;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1rem 3rem;
+            background: var(--gold);
+            color: var(--dark-charcoal);
+            border: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-charcoal);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            padding: 1rem 3rem;
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--dark-charcoal);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-charcoal);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--dark-charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .slide-left {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .slide-right {
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark-charcoal);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            background: transparent;
+            backdrop-filter: none;
+            padding: 0;
+            border-radius: 0;
+            position: static;
+            top: auto;
+            right: auto;
+            transform: none;
+            opacity: 1;
+            pointer-events: auto;
+            transition: all 0.3s ease;
+            box-shadow: none;
+        }
+
+        .nav-links.active {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .nav-links a {
+            color: var(--dark-charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(245, 241, 232, 0.95);
+                backdrop-filter: blur(10px);
+                transform: translateX(100%);
+                opacity: 0;
+                pointer-events: none;
+                padding: 4rem 2rem;
+                border-radius: 0;
+                box-shadow: none;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links li {
+                margin-bottom: 2rem;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+                transition: all 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background: rgba(201, 169, 110, 0.2);
+                border-radius: 4px;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            /* Mobile Footer Improvements */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.4rem;
+            }
+
+            /* Mobile Testimonial Improvements */
+            .testimonial-slide {
+                padding: 2rem;
+                height: auto;
+            }
+
+            .testimonial-quote {
+                font-size: 1.2rem;
+            }
+
+            .testimonial-client {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .client-avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">ELLIE HOMES</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="curtains.html">Collections</a></li>
+                <li><a href="gallery.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" id="hero-content">
+            <h1>CLIENT TESTIMONIALS</h1>
+            <p class="hero-subtitle">Hear From Our Satisfied Clients</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Testimonial Slider -->
+        <section>
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Real experiences from our valued customers</p>
+            </div>
+            
+            <div class="testimonial-container">
+                <div class="testimonial-slider" id="testimonial-slider">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-quote">
+                            "ELLIE HOMES transformed our home with their exquisite curtain designs. The attention to detail and quality of materials exceeded our expectations. Every room now feels like a luxury retreat. The service was professional, punctual, and truly understood our vision."
+                        </div>
+                        <div class="testimonial-client">
+                            <div class="client-avatar">
+                                <img src="images/ele.jpg" alt="Sarah Johnson" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                            </div>
+                            <div class="client-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>Residential Client</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-quote">
+                            "Working with ELLIE HOMES for our office renovation was a pleasure. The professional approach and stunning designs created the perfect corporate environment. The curtains not only look beautiful but also provide excellent light control and privacy. Our employees and clients have both commented on how impressive the space looks."
+                        </div>
+                        <div class="testimonial-client">
+                            <div class="client-avatar">MC</div>
+                            <div class="client-info">
+                                <h4>Michael Chen</h4>
+                                <p>Commercial Client</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-quote">
+                            "The custom curtains they created for our hotel lobby have received countless compliments from our guests. Truly exceptional craftsmanship. The quality of the materials and the precision of the installation were outstanding. ELLIE HOMES has become our go-to for all our hospitality design needs."
+                        </div>
+                        <div class="testimonial-client">
+                            <div class="client-avatar">HG</div>
+                            <div class="client-info">
+                                <h4>Hotel Grand</h4>
+                                <p>Hospitality Client</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-quote">
+                            "I was hesitant about investing in custom curtains, but ELLIE HOMES made the entire process seamless. From the initial consultation to the final installation, the service was knowledgeable and patient. The result? A home that feels more elegant and comfortable than I ever imagined possible."
+                        </div>
+                        <div class="testimonial-client">
+                            <div class="client-avatar">RT</div>
+                            <div class="client-info">
+                                <h4>Robert Thompson</h4>
+                                <p>Residential Client</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-quote">
+                            "ELLIE HOMES' attention to detail is unmatched. They took the time to understand our brand and created window treatments that perfectly complement our office aesthetic. The quality of their work speaks for itself, and we've received numerous compliments from our clients and visitors."
+                        </div>
+                        <div class="testimonial-client">
+                            <div class="client-avatar">DW</div>
+                            <div class="client-info">
+                                <h4>David Wilson</h4>
+                                <p>Corporate Client</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prev-btn">‹</button>
+                    <button class="slider-btn" id="next-btn">›</button>
+                </div>
+
+                <div class="slider-dots" id="slider-dots">
+                    <div class="dot active" data-slide="0"></div>
+                    <div class="dot" data-slide="1"></div>
+                    <div class="dot" data-slide="2"></div>
+                    <div class="dot" data-slide="3"></div>
+                    <div class="dot" data-slide="4"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Testimonials -->
+        <section class="additional-testimonials reveal">
+            <div class="section-title">
+                <h2>More Client Experiences</h2>
+                <p>Discover what makes our clients return</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-in">
+                    <p class="card-quote">"The team at ELLIE HOMES listened to our needs and delivered beyond expectations. Our living room now feels like a 5-star hotel suite!"</p>
+                    <div class="card-client">
+                        <div class="card-avatar">EM</div>
+                        <div class="card-info">
+                            <h4>Emily Martinez</h4>
+                            <p>Homeowner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-in">
+                    <p class="card-quote">"Professional, creative, and absolutely reliable. They transformed our conference room into a space that impresses every client who walks in."</p>
+                    <div class="card-client">
+                        <div class="card-avatar">JS</div>
+                        <div class="card-info">
+                            <h4>James Smith</h4>
+                            <p>Office Manager</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-in">
+                    <p class="card-quote">"From fabric selection to final installation, every step was handled with expertise and care. Our bedroom now feels like a luxury retreat."</p>
+                    <div class="card-client">
+                        <div class="card-avatar">LP</div>
+                        <div class="card-info">
+                            <h4>Lisa Parker</h4>
+                            <p>Interior Design Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-in">
+                    <p class="card-quote">"ELLIE HOMES' work speaks for itself. The quality, the attention to detail, and the customer service are all top-tier. Highly recommended!"</p>
+                    <div class="card-client">
+                        <div class="card-avatar">TK</div>
+                        <div class="card-info">
+                            <h4>Thomas Kim</h4>
+                            <p>Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-in">
+                    <p class="card-quote">"They took our vision and made it reality. The curtains are not only beautiful but also functional. We couldn't be happier with the results."</p>
+                    <div class="card-client">
+                        <div class="card-avatar">AG</div>
+                        <div class="card-info">
+                            <h4>Amanda Green</h4>
+                            <p>First-time Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card animate-in">
+                    <p class="card-quote">"Working with ELLIE HOMES was a dream. Their expertise in luxury interiors is evident in every detail. Our guests are always impressed."</p>
+                    <div class="card-client">
+                        <div class="card-avatar">HR</div>
+                        <div class="card-info">
+                            <h4>Hotel Riverview</h4>
+                            <p>Hospitality Partner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <h2 class="cta-title">Our Success Stories</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1000+</span>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2 class="cta-title">Ready to Transform Your Space?</h2>
+            <p class="cta-text">Join hundreds of satisfied clients who have experienced the ELLIE HOMES difference. Contact us today for a free consultation.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn-primary">Get Your Free Quote</a>
+                <a href="gallery.html" class="btn-secondary">View More Projects</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Gwarimpa, Abuja<br>Nigeria</p>
+                <p>info@elleodinya.com<br>+234 805 047 1246<br><a href="https://wa.me/2348050471246" style="color: #25D366; text-decoration: none; font-weight: bold;">💬 WhatsApp</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; line-height: 2;">
+                    <li><a href="index.html" style="color: #ccc; text-decoration: none;">Home</a></li>
+                    <li><a href="about.html" style="color: #ccc; text-decoration: none;">About Us</a></li>
+                    <li><a href="services.html" style="color: #ccc; text-decoration: none;">Services</a></li>
+                    <li><a href="contact.html" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+                <p style="margin-top: 2rem; color: #ccc;">© 2024 ELLIE HOMES</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+
+        // Scroll animation for navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hero content animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroContent = document.getElementById('hero-content');
+            
+            setTimeout(() => {
+                heroContent.classList.add('visible');
+            }, 500);
+
+            // Testimonial Slider
+            const slider = document.getElementById('testimonial-slider');
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const dots = document.querySelectorAll('.dot');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update active classes
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentIndex);
+                });
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateSlider();
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => goToSlide(index));
+            });
+
+            // Auto-rotate testimonials
+            let slideInterval = setInterval(nextSlide, 5000);
+
+            // Pause on hover
+            slider.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+
+            // Scroll reveal animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe reveal elements
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Animate testimonial cards
+            const animateCards = (selector) => {
+                document.querySelectorAll(selector).forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                    
+                    observer.observe(card);
+                });
+            };
+
+            animateCards('.testimonial-card');
+
+            // Parallax effect for hero background
+            const hero = document.querySelector('.hero');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                if (hero) {
+                    hero.style.backgroundPosition = `center ${rate * 0.5}px`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
