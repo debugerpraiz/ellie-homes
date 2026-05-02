@@ -14,7 +14,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://elleodinya.com">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -40,7 +40,7 @@
             background-color: var(--cream);
             color: var(--dark-charcoal);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         /* Typography */
@@ -51,7 +51,7 @@
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 1rem;
         }
 
@@ -68,8 +68,8 @@
         }
 
         p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
         }
 
         /* Navigation */
@@ -256,7 +256,7 @@
             }
 
             section {
-                padding: 4rem 1rem;
+                padding: 5rem 1rem;
             }
 
             .section-title {
@@ -330,6 +330,17 @@
             background-attachment: fixed;
         }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
         .curtain-container {
             position: absolute;
             top: 0;
@@ -384,13 +395,14 @@
 
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             text-align: center;
-            color: white;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            color: #ffffff;
+            text-shadow: 0 6px 25px rgba(0,0,0,0.7);
             opacity: 0;
             transform: translateY(50px);
             transition: all 1s ease;
+            line-height: 1.4;
         }
 
         .hero-content.visible {
@@ -399,7 +411,7 @@
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 2rem;
             font-weight: 300;
             letter-spacing: 4px;
@@ -414,7 +426,7 @@
         }
 
         .btn {
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             background: transparent;
             border: 2px solid var(--gold);
             color: var(--gold);
@@ -423,31 +435,35 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .btn:hover {
             background: var(--gold);
-            color: var(--dark-charcoal);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 169, 110, 0.4);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201, 169, 110, 0.4);
         }
 
         .btn.primary {
             background: var(--gold);
-            color: var(--dark-charcoal);
+            color: white;
+            box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
         }
 
         .btn.primary:hover {
             background: transparent;
             color: var(--gold);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
         /* Sections */
         section {
-            padding: 6rem 2rem;
+            padding: 10rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -674,84 +690,6 @@
             z-index: 1;
         }
 
-        /* Social Media Icon Styles */
-        .social-link.facebook {
-            background: #1877F2;
-        }
-        .social-link.facebook:hover {
-            background: #fff;
-            color: #1877F2;
-        }
-
-        .social-link.instagram {
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
-        }
-        .social-link.instagram:hover {
-            background: #fff;
-            color: #C13584;
-        }
-
-        .social-link.twitter {
-            background: #1DA1F2;
-        }
-        .social-link.twitter:hover {
-            background: #fff;
-            color: #1DA1F2;
-        }
-
-        .social-link.pinterest {
-            background: #E60023;
-        }
-        .social-link.pinterest:hover {
-            background: #fff;
-            color: #E60023;
-        }
-
-        /* Social Media Icons using Font Awesome Unicode symbols */
-        .social-link.facebook::after {
-            content: '\f09a';
-            font-family: 'Font Awesome 5 Brands';
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .social-link.instagram::after {
-            content: '\f16d';
-            font-family: 'Font Awesome 5 Brands';
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .social-link.twitter::after {
-            content: '\f099';
-            font-family: 'Font Awesome 5 Brands';
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .social-link.pinterest::after {
-            content: '\f231';
-            font-family: 'Font Awesome 5 Brands';
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .social-link.facebook:hover::after {
-            color: #1877F2;
-        }
-
-        .social-link.instagram:hover::after {
-            color: #C13584;
-        }
-
-        .social-link.twitter:hover::after {
-            color: #1DA1F2;
-        }
-
-        .social-link.pinterest:hover::after {
-            color: #E60023;
-        }
-
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -771,11 +709,19 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
             h2 {
                 font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 6rem 1rem;
             }
 
             .nav-container {
@@ -797,6 +743,11 @@
 
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+
+            .btn {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
             }
         }
 
